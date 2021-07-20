@@ -1,11 +1,11 @@
 Name: 		openrct2
-Version: 	0.3.2
+Version: 	0.3.4
 Release: 	1%{?dist}
 Summary: 	Open source reimplementation of Roller Coaster Tycoon 2
 
 License: 	GPLv3
 URL: 		https://www.openrct2.io
-Source0:	https://github.com/OpenRCT2/OpenRCT2/archive/v%{version}.tar.gz 
+Source0:	https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gcc gcc-c++ json-devel pkgconfig openssl-devel SDL2-devel speexdsp-devel libcurl-devel cmake libicu-devel fontconfig-devel freetype-devel libpng-devel libzip-devel mesa-libGL-devel duktape-devel qgis-devel
 
