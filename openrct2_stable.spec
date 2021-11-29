@@ -1,5 +1,9 @@
+#%if 0%{?fedora} >= 35
+#%_cmake_flag -Wno-deprecated-declarations
+#%endif
+
 Name: 		openrct2
-Version: 	0.3.4
+Version: 	0.3.5.1
 Release: 	1%{?dist}
 Summary: 	Open source reimplementation of Roller Coaster Tycoon 2
 
@@ -7,7 +11,7 @@ License: 	GPLv3
 URL: 		https://www.openrct2.io
 Source0:	https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	gcc gcc-c++ json-devel pkgconfig openssl-devel SDL2-devel speexdsp-devel libcurl-devel cmake libicu-devel fontconfig-devel freetype-devel libpng-devel libzip-devel mesa-libGL-devel duktape-devel qgis-devel
+BuildRequires:	gcc gcc-c++ json-devel pkgconfig openssl-devel SDL2-devel speexdsp-devel libcurl-devel cmake libicu-devel fontconfig-devel freetype-devel libpng-devel libzip-devel mesa-libGL-devel duktape-devel qgis-devel ninja-build
 
 %description
 OpenRCT2 is a free open source remake of the famous RollerCoaster Tycoon 2 game.
@@ -18,7 +22,7 @@ OpenRCT2 is a free open source remake of the famous RollerCoaster Tycoon 2 game.
 %build
 mkdir build
 cd build
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DDISABLE_GOOGLE_BENCHMARK:BOOL=ON -DCMAKE_INSTALL_PREFIX=/usr  ..
+%cmake -G Ninja -DDISABLE_GOOGLE_BENCHMARK:BOOL=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BINARY_DIR=usr ..
 ln -s ../data data
 %install
 cd build
